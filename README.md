@@ -3,7 +3,7 @@
 Team:
 
 * Kyle - Sales
-* Person 2 - Which microservice?
+* Jake Hannahan - Service
 
 ## Design
 
