@@ -5,8 +5,6 @@ from .models import AutomobileVO, SalesPerson, Customer, SaleRecord
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "color",
-        "year",
         "vin",
         "import_href",
     ]

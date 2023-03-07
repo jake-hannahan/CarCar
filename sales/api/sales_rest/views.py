@@ -4,7 +4,6 @@ from django.views.decorators.http import require_http_methods
 import json
 from .models import AutomobileVO, SalesPerson, Customer, SaleRecord
 from .encoders import (
-    AutomobileVOEncoder,
     SalesPersonEncoder,
     CustomerEncoder,
     SaleRecordEncoder
