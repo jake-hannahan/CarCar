@@ -29,7 +29,7 @@ function AppointmentForm() {
         const url = 'http://localhost:8080/api/appointments/';
 
         const fetchConfig = {
-            method: "post",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,6 @@ function AppointmentForm() {
 
         if (response.ok) {
             const newAppointment = await response.json();
-            console.log("new appointment: ", newAppointment);
 
             setFormData({
                 vin: "",
@@ -82,7 +81,7 @@ function AppointmentForm() {
         <div className="row">
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h2 className="display-5 text-center">New Service Appointment</h2>
+                    <h2 className="display-5 text-center"><b>New Service Appointment</b></h2>
                     <form onSubmit={handleSubmit} id="create-new-service-appointment">
                         <div className="form-floating mb-3">
                             <input onChange={handleFieldChange} placeholder="Vin" required type="text" name="vin" id="vin" value={formData.vin} className="form-control"/>
