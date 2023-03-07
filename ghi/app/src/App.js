@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import TechnicianForm from './Components/Technician/TechnicianForm';
 import AppointmentForm from './Components/Appointments/AppointmentForm';
+import AppointmentList from './Components/Appointments/AppointmentList';
 import Nav from './Nav';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="technician/new" element={<TechnicianForm />} />
+          <Route path="appointments" element={<AppointmentList />} />
           <Route path="appointments/new" element={<AppointmentForm />} />
         </Routes>
       </div>

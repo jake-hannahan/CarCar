@@ -104,16 +104,17 @@ def api_show_appointment(request, id):
         count, _ = ServiceAppointment.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
     else:
-        try:
-            content = json.loads(request.body)
-            technician_id = content["technician"]
-            technician = Technician.objects.get(id=technician_id)
-            content["technicians"] = technician
-        except Technician.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid technician id"},
-                status=404,
-            )
+        content = json.loads(request.body)
+        if "technician" in content:
+            try:
+                technician_id = content["technician"]
+                technician = Technician.objects.get(id=technician_id)
+                content["technicians"] = technician
+            except Technician.DoesNotExist:
+                return JsonResponse(
+                    {"message": "Invalid technician id"},
+                    status=404,
+                )
         ServiceAppointment.objects.filter(id=id).update(**content)
         appointment = ServiceAppointment.objects.get(id=id)
         return JsonResponse(
