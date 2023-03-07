@@ -6,8 +6,27 @@ from .models import AutomobileVO, SalesPerson, Customer, SaleRecord
 from .encoders import (
     SalesPersonEncoder,
     CustomerEncoder,
-    SaleRecordEncoder
+    SaleRecordEncoder,
+    AutomobileVOEncoder
 )
+
+
+@require_http_methods(["GET"])
+def list_automobileVOs(request):
+    automobiles = AutomobileVO.objects.all()
+    return JsonResponse({"autos": automobiles}, encoder=AutomobileVOEncoder)
+
+@require_http_methods(["GET"])
+def update_automobileVOs_Sold(request, href):
+    automobile = AutomobileVO.objects.get(import_href=href)
+    return JsonResponse(
+        automobile,
+        encoder=AutomobileVOEncoder,
+        safe=False
+    )
+
+
+
 
 @require_http_methods(["GET", "POST"])
 def list_sales_person(request):
