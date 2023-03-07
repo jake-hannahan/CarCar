@@ -6,6 +6,9 @@ import AppointmentList from './Components/Appointments/AppointmentList';
 import Nav from './Nav';
 import SalesPersonForm from './Components/Sales_Person/SalesPersonForm';
 import CustomerForm from './Components/Customer/CustomerForm';
+import SalesRecordForm from './Components/Sales_Record/SalesRecordForm';
+import SalesRecordList from './Components/Sales_Record/SalesRecordList';
+import SalesPersonSales from './Components/Sales_Person/SalePersonSales';
 
 function App() {
   return (
@@ -16,9 +19,14 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="sales-person">
             <Route path="new" element={<SalesPersonForm />} />
+            <Route path="sales" element={<SalesPersonSales />} />
           </Route>
           <Route path="customer">
             <Route path="new" element={<CustomerForm />} />
+          </Route>
+          <Route path="sales-record">
+            <Route path="new" element={<SalesRecordForm />} />
+            <Route path="all" element={<SalesRecordList />} />
           </Route>
           <Route path="technician/new" element={<TechnicianForm />} />
           <Route path="appointments" element={<AppointmentList />} />

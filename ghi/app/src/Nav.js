@@ -22,6 +22,12 @@ function Nav() {
             <li className='nav-item'>
               <NavLink className='nav-link' to="customer/new">New Customer</NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to="sales-record/all">All Sales Records</NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to="sales-person/sales">Sale Person History</NavLink>
+            </li>
           </ul>
         </div>
       </div>
