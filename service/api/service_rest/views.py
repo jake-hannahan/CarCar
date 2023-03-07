@@ -2,41 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from common.json import ModelEncoder
 from .models import AutomobileVO, Technician, ServiceAppointment
-
-
-class AutomobileVODetailEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "vin",
-        "import_href"
-    ]
-
-
-class TechnicianEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "name",
-        "employee_number",
-        "id"
-    ]
-
-
-class ServiceAppointmentEncoder(ModelEncoder):
-    model = ServiceAppointment
-    properties = [
-        "vin",
-        "customer_name",
-        "date",
-        "technician",
-        "reason",
-        "vip",
-        "completed"
-    ]
-    encoders = {
-        "technician": TechnicianEncoder()
-    }
+from .encoders import AutomobileVOEncoder, TechnicianEncoder, ServiceAppointmentEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -145,7 +112,7 @@ def api_show_appointment(request, id):
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid technician id"},
-                status=400,
+                status=404,
             )
         ServiceAppointment.objects.filter(id=id).update(**content)
         appointment = ServiceAppointment.objects.get(id=id)
