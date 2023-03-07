@@ -2,13 +2,16 @@ import React, { useEffect, useState,  } from 'react';
 
 function ModelForm() {
 
+
     const [formData, setFormData] = useState({
         name: "",
         manufacturer: "",
         picture: ""
     })
 
+
     const [manufacturers, setManufacturers] = useState([]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();

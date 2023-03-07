@@ -3,11 +3,14 @@ import { useState, useEffect } from "react"
 
 function ManufacturerForm() {
 
+
     const [formData, setFormData] = useState({
         name: ""
     })
 
+
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         const data = {
             name: formData.name

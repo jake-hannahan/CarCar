@@ -2,7 +2,9 @@ import React, { useEffect, useState,  } from 'react';
 
 function ModelList() {
 
+
     const [models, setModels] = useState([]);
+
 
     const fetchData = async () => {
         const response = await fetch("http://localhost:8100/api/models/");
@@ -13,9 +15,11 @@ function ModelList() {
         }
     }
 
+
     useEffect(() => {
         fetchData();
     }, []);
+
 
     return (
         <>

@@ -3,9 +3,12 @@ import React, { useEffect, useState,  } from 'react';
 
 function AutomobileList() {
 
+
     const [autos, setAutos] = useState([]);
 
+
     const fetchData = async () => {
+
         const response = await fetch("http://localhost:8100/api/automobiles/");
 
         if (response.ok) {
@@ -13,6 +16,7 @@ function AutomobileList() {
             setAutos(data.autos);
         }
     }
+
 
     useEffect(() => {
         fetchData();

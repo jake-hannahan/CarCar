@@ -3,13 +3,16 @@ import Moment from 'react-moment';
 
 function ServiceHistory() {
 
+
     const [searchVIN, setSearchVIN] = useState("");
     const [appointments, setAppointments] = useState([]);
+
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
         setSearchVIN(value);
     }
+
 
     const handleSearchVIN = async () => {
         const vin = searchVIN;
@@ -22,6 +25,7 @@ function ServiceHistory() {
         }
 
     }
+
 
     return (
     <>

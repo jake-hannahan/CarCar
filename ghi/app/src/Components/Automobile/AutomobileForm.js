@@ -3,6 +3,7 @@ import React, { useEffect, useState,  } from 'react';
 
 function AutomobileForm() {
 
+
     const [formData, setFormData] = useState({
         color: "",
         year: "",
@@ -10,7 +11,9 @@ function AutomobileForm() {
         model: "",
     })
 
+
     const [models, setModels] = useState([]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,6 +55,7 @@ function AutomobileForm() {
             [e.target.name]: e.target.value
         })
     }
+
 
     const fetchData = async () => {
         const response = await fetch("http://localhost:8100/api/models/");

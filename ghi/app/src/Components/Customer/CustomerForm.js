@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 
 function CustomerForm() {
+
+
     const [formData, setFormData] = useState({
         name: '',
         address: '',
         phone_number: '',
     })
 
+
     const handleSubmit = async (e) => {
+
         e.preventDefault();
 
         const customerUrl = 'http://localhost:8090/api/customers/';
@@ -31,14 +35,18 @@ function CustomerForm() {
         }
     }
 
+
     const handleFormChange = (e) => {
+
         const value = e.target.value;
         const inputName = e.target.name;
+
         setFormData({
             ...formData,
             [inputName]: value
         });
     }
+
 
     return (
         <div className="row">

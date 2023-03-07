@@ -4,7 +4,9 @@ import Moment from 'react-moment';
 
 function AppointmentList() {
 
+
     const [appointments, setAppointments] = useState([]);
+
 
     const fetchData = async () => {
         const response = await fetch("http://localhost:8080/api/appointments/");
@@ -15,9 +17,11 @@ function AppointmentList() {
         }
     }
 
+
     useEffect(() => {
         fetchData();
     }, []);
+
 
     const handleCancel = async (e) => {
         const appointmentHref = e.target.value;
@@ -30,6 +34,7 @@ function AppointmentList() {
             fetchData();
         }
     }
+
 
     const handleFinished = async (e) => {
         const appointmentHref = e.target.value;
@@ -47,6 +52,7 @@ function AppointmentList() {
             fetchData();
         }
     }
+
 
     return (
     <>
