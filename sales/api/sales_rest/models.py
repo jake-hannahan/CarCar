@@ -43,7 +43,8 @@ class SaleRecord(models.Model):
     )
 
     price = models.DecimalField(
-        null=True,
+        null=False,
+        default= 0.00,
         max_digits=15,
         decimal_places=2,
     )

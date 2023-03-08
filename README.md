@@ -34,9 +34,24 @@ Models
 ## Sales microservice
 Models:
     AutomobileVO: created by polling the automobile model in the inventory microservice to get an import_href value and vin number.
+        Fields:
+            -import_href: a unique charfield
+            -vin: a unique charfield
 
-    SalesPerson: creats a sales person instance with the sale person's name and unique employee number
+    Customer:
+        Fields :
+            -name: charfield with null false (must have customer name)
+            -address: charfield with null false (must have address)
+            -phone_number: charfield with null false (must have phone number)
 
-    Customer: creates a customer instance with name, address, and phone_number
+    Sales Person:
+        Fields:
+            -name: charfield with null false (must have sales person name)
+            -employee_number: charfield with null false and unique true (multiple sales persons cannot have the same employee number. must have a sales person employee number)
 
-    SaleRecord: creates a sale record instance that is foreign keys with the AutomobileVO, SalesPerson, and Customer models. Each of these models can have multiple instances of sale records. Instance also has a price property that is a decimal field.
+    SaleRecord: creates a sale record instance that is foreign keys with the AutomobileVO, SalesPerson, and Customer models.
+        Fields:
+            -automobile: references the automobileVO. On delete is protect so an automobile cannot be deleted if it has a linked sales record
+            -sales_person: references the sales person model. On delete is protect so an sales person cannot be deleted if it has a linked sales record
+            -customer: references the customer model. On delete is protect so an customer cannot be deleted if it has a linked sales record
+            -price: decimal field with a max_digits of 15 and decimal_places set to 2 (2 decimal places for prices). Null set to false (cannot create a sales record without completing the sale and having a price)
