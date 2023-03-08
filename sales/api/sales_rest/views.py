@@ -95,7 +95,6 @@ def show_customer(request, pk):
         return JsonResponse({"deleted": count > 0})
 
 
-
 @require_http_methods(["GET", "POST"])
 def list_sales(request):
     if request.method == 'GET':
