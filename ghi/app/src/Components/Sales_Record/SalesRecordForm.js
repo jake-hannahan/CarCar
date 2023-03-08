@@ -5,7 +5,7 @@ function SalesRecordForm() {
     const [salesPersons, setSalesPersons] = useState([]);
     const [customers, setCustomers] = useState([]);
     const [saleRecords, setSaleRecords] = useState([]);
-    const [saleHrefs, setSaleHrefs] = useState([]);
+    const [saleVINs, setSaleVINS] = useState([]);
     const [formData, setFormData] = useState({
         automobile: '',
         sales_person: '',
@@ -20,6 +20,7 @@ function SalesRecordForm() {
         if (response.ok) {
             const data = await response.json();
             setSaleRecords(data.sales);
+            setSaleVINS(data.sales.map(sale => sale.automobile.vin))
         }
 
         console.log(saleRecords)
@@ -60,6 +61,7 @@ function SalesRecordForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log(formData.price)
 
         const automobileUrl = `http://localhost:8090/api/autos/${formData.automobile}/`;
         const automobileFetchConfig = {
@@ -108,6 +110,7 @@ function SalesRecordForm() {
         });
     }
 
+
     useEffect(() => {
         getSaleRecords();
         getAutomobiles();
@@ -124,7 +127,7 @@ function SalesRecordForm() {
                         <div className="mb-3">
                             <select onChange={handleFormChange} value={formData.automobile} required name="automobile" id="automobile" className="form-select">
                                 <option value="">Choose an automobile</option>
-                                {automobiles.map(automobile => {
+                                {automobiles.filter(automobile => saleVINs.includes(automobile.vin) === false).map(automobile => {
                                     return (
                                         <option key={automobile.vin} value={automobile.import_href}>{automobile.vin}</option>
                                     )

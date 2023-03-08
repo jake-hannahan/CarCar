@@ -28,6 +28,7 @@ function SalesPersonSales() {
     }
 
     const handleSearchChange = async (e) => {
+        e.preventDefault();
 
         const value = e.target.value;
         const url = `http://localhost:8090/api/sales-person/${value}/`

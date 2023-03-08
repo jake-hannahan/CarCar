@@ -27,9 +27,7 @@ def get_automobile():
     for automobile in content["autos"]:
         AutomobileVO.objects.update_or_create(
             import_href=automobile["href"],
-            defaults={"color":automobile["color"],
-                      "year":automobile["year"],
-                      "vin":automobile["vin"],}
+            defaults={"vin":automobile["vin"],}
         )
 def poll():
     while True:
