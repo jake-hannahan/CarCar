@@ -40,6 +40,14 @@ function SalesPersonSales() {
         }
     }
 
+    const formatPrice = (value) => {
+        const newValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return (
+            <td>${newValue}</td>
+        )
+    }
+
+
 
     useEffect(() => {
         getSalesPersons();
@@ -75,7 +83,7 @@ function SalesPersonSales() {
                             <td>{salesRecord.sales_person.name}</td>
                             <td>{salesRecord.customer.name}</td>
                             <td>{salesRecord.automobile.vin}</td>
-                            <td>{salesRecord.price}</td>
+                            {formatPrice(salesRecord.price)}
                         </tr>
                     )
                 })}

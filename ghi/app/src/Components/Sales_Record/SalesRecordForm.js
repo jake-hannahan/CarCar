@@ -156,7 +156,7 @@ function SalesRecordForm() {
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} value={formData.price} placeholder="Price" required type="number" name="price" id="price" className="form-control" />
-                            <label htmlFor="price">Price</label>
+                            <label htmlFor="price">Sale Price</label>
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>

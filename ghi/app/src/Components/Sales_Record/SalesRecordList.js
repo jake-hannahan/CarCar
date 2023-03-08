@@ -13,6 +13,13 @@ function SalesRecordList() {
         }
     }
 
+    const formatPrice = (value) => {
+        const newValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return (
+            <td>${newValue}</td>
+        )
+    }
+
     useEffect(() => {
         getSalesRecords()
     }, []);
@@ -27,7 +34,7 @@ function SalesRecordList() {
                         <th>Employee Number</th>
                         <th>Purchaser</th>
                         <th>VIN</th>
-                        <th>Price</th>
+                        <th>Sale Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +45,7 @@ function SalesRecordList() {
                                 <td>{saleRecord.sales_person.employee_number}</td>
                                 <td>{saleRecord.customer.name}</td>
                                 <td>{saleRecord.automobile.vin}</td>
-                                <td>{saleRecord.price}</td>
+                                {formatPrice(saleRecord.price)}
                             </tr>
                         )
                     })}
