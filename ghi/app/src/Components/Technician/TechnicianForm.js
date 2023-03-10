@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
 function TechnicianForm() {
@@ -27,8 +27,7 @@ function TechnicianForm() {
         }
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
-            const newTechnician = await response.json();
-            console.log("new technician: ", newTechnician);
+            await response.json();
 
             setFormData({
                 name: "",

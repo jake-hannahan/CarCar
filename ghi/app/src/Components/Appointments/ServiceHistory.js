@@ -1,4 +1,4 @@
-import React, { useEffect, useState,  } from 'react';
+import React, { useState  } from 'react';
 import Moment from 'react-moment';
 
 function ServiceHistory() {
