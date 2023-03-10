@@ -23,6 +23,7 @@ class ServiceAppointmentEncoder(ModelEncoder):
     model = ServiceAppointment
     properties = [
         "vin",
+        "id",
         "customer_name",
         "date",
         "technician",

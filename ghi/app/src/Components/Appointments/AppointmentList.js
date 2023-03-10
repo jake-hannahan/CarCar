@@ -13,6 +13,7 @@ function AppointmentList() {
 
         if (response.ok) {
             const data = await response.json();
+            console.log(data);
             setAppointments(data.appointments);
         }
     }
@@ -37,8 +38,8 @@ function AppointmentList() {
 
 
     const handleFinished = async (e) => {
-        const appointmentHref = e.target.value;
-        const appointmentUrl = `http://localhost:8080${appointmentHref}`;
+        const appointmentId = e.target.value;
+        const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}/`;
         const completed = {"completed": true};
         const fetchConfig = {
             method: "PUT",
@@ -74,7 +75,7 @@ function AppointmentList() {
                     {appointments.map(appointment => {
                         if (appointment.completed === false) {
                             return (
-                                <tr key={appointment.href} value={appointment.href}>
+                                <tr key={appointment.id} value={appointment.id}>
                                     <td>
                                     {appointment.vip
                                         ?   <p>
@@ -104,8 +105,8 @@ function AppointmentList() {
                                     <td>{appointment.technician.name}</td>
                                     <td>{appointment.reason}</td>
                                     <td>
-                                        <button className='btn btn-danger' onClick={handleCancel} value={appointment.href}>Cancel</button>
-                                        <button className='btn btn-success' onClick={handleFinished} value={appointment.href}>Finished</button>
+                                        <button className='btn btn-danger' onClick={handleCancel} value={appointment.id}>Cancel</button>
+                                        <button className='btn btn-success' onClick={handleFinished} value={appointment.id}>Finished</button>
                                     </td>
                                 </tr>
                             )
