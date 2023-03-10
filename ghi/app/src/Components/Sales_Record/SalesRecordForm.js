@@ -4,7 +4,6 @@ function SalesRecordForm() {
     const [automobiles, setAutomobiles] = useState([]);
     const [salesPersons, setSalesPersons] = useState([]);
     const [customers, setCustomers] = useState([]);
-    const [saleRecords, setSaleRecords] = useState([]);
     const [saleVINs, setSaleVINS] = useState([]);
     const [formData, setFormData] = useState({
         automobile: '',
@@ -13,19 +12,17 @@ function SalesRecordForm() {
         price: '',
     });
 
+
     const getSaleRecords = async () => {
         const url = 'http://localhost:8090/api/sales-records/';
         const response = await fetch(url)
 
         if (response.ok) {
             const data = await response.json();
-            setSaleRecords(data.sales);
             setSaleVINS(data.sales.map(sale => sale.automobile.vin))
         }
-
-        console.log(saleRecords)
-
     }
+
 
     const getAutomobiles = async () => {
         const url = 'http://localhost:8090/api/autos/';
@@ -38,6 +35,7 @@ function SalesRecordForm() {
         }
     }
 
+
     const getSalesPersons = async () => {
         const url = 'http://localhost:8090/api/sales-person/';
         const response = await fetch(url)
@@ -47,6 +45,7 @@ function SalesRecordForm() {
             setSalesPersons(data.sales_person)
         }
     }
+
 
     const getCustomers = async () => {
         const url = 'http://localhost:8090/api/customers/';
@@ -58,25 +57,9 @@ function SalesRecordForm() {
         }
     }
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(formData.price)
-
-        const automobileUrl = `http://localhost:8090/api/autos/${formData.automobile}/`;
-        const automobileFetchConfig = {
-            method: "put",
-            body: JSON.stringify(formData.automobile),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-
-        const automobileResponse = await fetch(automobileUrl, automobileFetchConfig);
-
-        if (automobileResponse.ok) {
-            console.log('okay')
-        }
 
         const salesRecordUrl = 'http://localhost:8090/api/sales-records/';
 
@@ -101,6 +84,7 @@ function SalesRecordForm() {
 
     }
 
+
     const handleFormChange = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
@@ -117,6 +101,7 @@ function SalesRecordForm() {
         getSalesPersons();
         getCustomers();
     }, []);
+
 
     return (
         <div className="row">

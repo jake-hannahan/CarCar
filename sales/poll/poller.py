@@ -11,15 +11,9 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
-# Import models from sales_rest, here.
-# from sales_rest.models import Something
+
 from sales_rest.models import AutomobileVO
 
-# session = requests.Session()
-# retry = Retry(connect=3, backoff_factor=0.5)
-# adapter = HTTPAdapter(max_retries=retry)
-# session.mount('http://', adapter)
-# session.mount('https://', adapter)
 
 def get_automobile():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
@@ -29,6 +23,8 @@ def get_automobile():
             import_href=automobile["href"],
             defaults={"vin":automobile["vin"],}
         )
+
+
 def poll():
     while True:
         print('Sales poller polling for data')

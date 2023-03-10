@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import AutomobileVO, SalesPerson, Customer, SaleRecord
 
-# Register your models here.
+
 @admin.register(AutomobileVO)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = (
@@ -9,6 +9,7 @@ class RecipeAdmin(admin.ModelAdmin):
         "vin",
         "id",
     )
+
 
 @admin.register(SalesPerson)
 class RecipeAdmin(admin.ModelAdmin):
@@ -18,6 +19,7 @@ class RecipeAdmin(admin.ModelAdmin):
         "id",
     )
 
+
 @admin.register(Customer)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = (
@@ -26,6 +28,7 @@ class RecipeAdmin(admin.ModelAdmin):
         "phone_number",
         "id",
     )
+
 
 @admin.register(SaleRecord)
 class RecipeAdmin(admin.ModelAdmin):
