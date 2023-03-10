@@ -24,8 +24,8 @@ function AppointmentList() {
 
 
     const handleCancel = async (e) => {
-        const appointmentHref = e.target.value;
-        const appointmentUrl = `http://localhost:8080${appointmentHref}`;
+        const appointmentId = e.target.value;
+        const appointmentUrl = `http://localhost:8080/api/appointments/${appointmentId}/`;
         const fetchConfig = {
             method: "DELETE",
         }
