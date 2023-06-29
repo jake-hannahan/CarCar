@@ -4,7 +4,7 @@ import TechnicianForm from './Components/Technician/TechnicianForm';
 import AppointmentForm from './Components/Appointments/AppointmentForm';
 import AppointmentList from './Components/Appointments/AppointmentList';
 import ServiceHistory from './Components/Appointments/ServiceHistory';
-import Nav from './Nav';
+import Navigation from './Nav';
 import SalesPersonForm from './Components/Sales_Person/SalesPersonForm';
 import CustomerForm from './Components/Customer/CustomerForm';
 import SalesRecordForm from './Components/Sales_Record/SalesRecordForm';
@@ -20,7 +20,7 @@ import AutomobileForm from './Components/Automobile/AutomobileForm';
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
+      <Navigation />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
