@@ -88,7 +88,7 @@ function AppointmentForm() {
                             <label htmlFor="vin">Vin</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFieldChange} placeholder="customerName" required type="text" name="customerName" id="customerName" value={formData.customerName} className="form-control"/>
+                            <input onChange={handleFieldChange} placeholder="customerName" required type="text" name="customerName" id="customerName" value={formData.customer_name} className="form-control"/>
                             <label htmlFor="customerName">Customer Name</label>
                         </div>
                         <div className="form-floating mb-3">
